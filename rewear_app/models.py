@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 
@@ -11,6 +12,12 @@ class User(db.Model):
 
     outfits = db.relationship('Outfit', backref='user', lazy=True)
     items = db.relationship('Item', backref='user', lazy=True)
+
+    def set_password(self, password: str) -> None:
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password: str) -> bool:
+        return check_password_hash(self.password_hash, password)
 
 #item model to store information about each clothing item, including its name, category, and the user it belongs to
 class Item(db.Model):
