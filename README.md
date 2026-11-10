@@ -1,5 +1,11 @@
 # ReWear
 
+## Demo
+
+Capture an outfit photo in the app, log the look, and explore Insights and the wardrobe. The clip has no audio.
+
+[Watch the demo (MP4)](docs/demo/rewear-demo.mp4)
+
 ## Project Structure
 
 ```
